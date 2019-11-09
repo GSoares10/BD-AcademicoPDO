@@ -1,0 +1,19 @@
+.section {
+    background: url("https://iso.500px.com/wp-content/uploads/2016/03/pedroquintela.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 835px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+table {
+    margin-bottom: 15px;
+}
+
+.reg {
+    margin-bottom: 15px;
+}
+.back {
+    margin-top: 15px;
+}
