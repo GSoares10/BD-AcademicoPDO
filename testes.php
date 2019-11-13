@@ -2,10 +2,10 @@
     require_once('php/Curso.class.php');
     require_once('php/CursoDAO.php');
 
-    $curso1 = new Curso('Informatica','Hack',9,'10-10-2010');
-    $curso2 = new Curso('Refri','Geladeira',99,'11-01-1010');
-    $curso3 = new Curso('TADS','Hack-Master',1000,'01-12-2120');
-    $curso4 = new Curso('Automacao','LEGO',1,'21-11-2001');
+    $curso1 = new Curso('Informatica','Hack',9, new DateTime('07-09-2001'));
+    $curso2 = new Curso('Refri','Geladeira',99, new DateTime('11-01-1010'));
+    $curso3 = new Curso('TADS','Hack-Master',1000, new DateTime('01-12-2120'));
+    $curso4 = new Curso('Automacao','LEGO',1, new DateTime('21-11-2001'));
     $cursoDAO = new CursoDAO();
 
     #INSERIR
@@ -25,7 +25,7 @@
 
     #LISTAR
     $limit = 10;
-    $offset = 5;
+    $offset = 0;
     $lista1= $cursoDAO->lista($limit, $offset);
     var_dump($lista1);
 
@@ -36,8 +36,8 @@
     var_dump($cursoDAO->altera($busca2));
 
     #SALVAR - Inserir
-    $salva1 = new Curso('Teste1','Salva1',99,'07-02-1999');
-    $salva2 = new Curso('Teste2','Salva2',188,'17-12-2999');
+    $salva1 = new Curso('Teste1','Salva1',99,new DateTime('07-02-1999'));
+    $salva2 = new Curso('Teste2','Salva2',188,new DateTime('17-12-2999'));
     var_dump($cursoDAO->salva($salva1));
     var_dump($cursoDAO->salva($salva2));
 

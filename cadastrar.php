@@ -3,7 +3,8 @@
     require_once('php/Curso.class.php');
 
     $id = isset($_POST['id']);
-    $curso = new Curso($_POST['nome'], $_POST['area'], $_POST['cargaHoraria'], $_POST['dataFundacao']);
+    $data = new DateTime($_POST['dataFundacao']);
+    $curso = new Curso($_POST['nome'], $_POST['area'], $_POST['cargaHoraria'], $data);
     $cdao = new CursoDAO();
     
     if($id){

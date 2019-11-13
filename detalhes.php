@@ -21,7 +21,7 @@
                     <ul>
                         <li class="indigo-text text-darken4"><?php echo "Area: ".$curso->getArea();?></li>
                         <li class="indigo-text text-darken4"><?php echo "Carga Horária: ".$curso->getCargaH();?></li>
-                        <li class="indigo-text text-darken4"><?php echo "Data Fundação: ".$curso->getDataF();?></li>
+                        <li class="indigo-text text-darken4"><?php echo "Data Fundação: ".$curso->getDataF()->format('d/m/Y');?></li>
                     </ul>
                     <a href="listaCursos.php" class="btn" role="button" aria-pressed="true"> << Voltar</a>
                 </div>

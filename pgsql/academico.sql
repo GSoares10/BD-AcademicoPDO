@@ -1,5 +1,5 @@
--- CREATE DATABASE "academico";
-
+﻿-- CREATE DATABASE "academico";
+-- DELETE FROM "Curso";
 CREATE TABLE "Curso" (
 "id" serial,
 "nome" varchar(100) NOT NULL,

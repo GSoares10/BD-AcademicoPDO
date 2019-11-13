@@ -14,7 +14,7 @@
 
 <div class="section scrollspy">
     <div class="row">
-        <div class="col s8 l6 offset-l3">
+        <div class="col s8 l6 offset-l3 offset-s2">
             <div class="card grey lighten-5 z-depth-1">
                 <div class="card-action center">
                     <h2 class="indigo-text text-darken4">Cadastro de Cursos</h2>
@@ -34,7 +34,7 @@
                             <label for="cargaHoraria">Carga Horária</label>
                         </div>
                         <div class="input-field">
-                            <input type="date" id="dataFundacao" name="dataFundacao" required="required" value="<?php if($id) echo $curso->getDataF();?>">
+                            <input type="date" id="dataFundacao" name="dataFundacao" required="required" value="<?php if($id) echo $curso->getDataF()->format('Y-m-d');?>">
                             <label for="dataFundacao">Data Fundação</label>
                         </div>
                         <?php if($id) {?>

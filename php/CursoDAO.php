@@ -2,7 +2,7 @@
 
     class CursoDAO {
         private function getConexao() {
-            $con = new PDO("pgsql:host=localhost;dbname=Academico;port=5432", "postgres", "postgres");
+            $con = new PDO("pgsql:host=localhost;dbname=Academico;port=5432", "postgres", "kgi11030319");
             return $con;
         }
 
@@ -13,7 +13,7 @@
             $stmt->bindValue(1, $curso->getNome());
             $stmt->bindValue(2, $curso->getArea());
             $stmt->bindValue(3, $curso->getCargaH());
-            $stmt->bindValue(4, $curso->getDataF());
+            $stmt->bindValue(4, $curso->getDataF()->format('Y-m-d'));
 
             $res = $stmt->execute();
 
@@ -57,15 +57,15 @@
             $stmt->bindValue(1, $id);
 
             $res = $stmt->execute();
-
+            $curso = false;
             if($res) {
                 $linha = $stmt->fetch(PDO::FETCH_ASSOC);
-                $curso = new Curso($linha['nome'], $linha['area'], $linha['cargaHoraria'], $linha['dataFundacao']);
-                $curso->setId(intval($linha['id']));
-            }else{
-                $curso = $res;
-                echo $stm->queryString;
-                var_dump($stm->errorInfo());
+                if($linha == null) {
+                    return $curso;
+                }else{
+                    $curso = new Curso($linha['nome'], $linha['area'], $linha['cargaHoraria'], new DateTime($linha['dataFundacao']));
+                    $curso->setId(intval($linha['id']));
+                } 
             }
             $stmt->closeCursor();
             $stmt = NULL;
@@ -85,7 +85,7 @@
 
             if($res) {
                 while($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $curso = new Curso($linha['nome'], $linha['area'], $linha['cargaHoraria'], $linha['dataFundacao']);
+                    $curso = new Curso($linha['nome'], $linha['area'], $linha['cargaHoraria'], new DateTime($linha['dataFundacao']));
                     $curso->setId(intval($linha['id']));
                     array_push($listCursos, $curso);
                 } 
@@ -103,7 +103,7 @@
             $stmt->bindValue(1, $curso->getNome());
             $stmt->bindValue(2, $curso->getArea());
             $stmt->bindValue(3, $curso->getCargaH());
-            $stmt->bindValue(4, $curso->getDataF());
+            $stmt->bindValue(4, $curso->getDataF()->format('Y-m-d'));
             $stmt->bindValue(5, $curso->getId(), PDO::PARAM_INT);
 
             $res = $stmt->execute();

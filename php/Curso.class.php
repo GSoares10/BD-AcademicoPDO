@@ -26,8 +26,7 @@
             return $this->cargaHoraria;
         }
         public function getDataF() {
-            $data = new DateTime($this->dataFundacao);
-            return $data->format('d/m/Y');
+            return $this->dataFundacao;
         }
         public function setId($id) {
             $this->id = $id;
